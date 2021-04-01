@@ -1,0 +1,17 @@
+{
+  "name": "-asdf",
+  "version": "1.0.0",
+  "description": "",
+  "main": "skurrol.js",
+  "scripts": {
+    "start": "node skurrol.js"
+  },
+  "engines": {
+    "node": "12.x"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dbd.js": "^2.2.6"
+  }
+}
