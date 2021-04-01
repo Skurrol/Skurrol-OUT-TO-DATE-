@@ -54,12 +54,21 @@ bot.command({
     $description[📊 **__Status__**
     +ping
     +credits
+
     🔨 **__Moderation__**
     +ban
     +kick
     +clear <number>
+
     😂 **__Fun__**
     +mchead <Minecraft Name>]
+
+    🎶 **__Music__**
+    +play <song name>
+    +skip
+    +stop
+    +volume <number>
+    
     $footer[$randomText[; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ;☭ SOVIET UNION]]
     $image[https://cdn.discordapp.com/attachments/808766425199804458/821774775520460820/img_help.png]
     $color[#fb80ff]
