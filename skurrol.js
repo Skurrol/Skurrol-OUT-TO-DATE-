@@ -114,6 +114,26 @@ bot.command({
 */
 
 bot.command({
+    name: "debug",
+    code: `
+    $argsCheck[>1;What tf do u want to debug]
+    $eval[$message]
+    `
+})
+
+/*
+
+bot.command({
+    name: "debug",
+    code: `
+    $title[Hello guys welcome to my Minecraft projekt!]
+    $description[1.How to find Diamonds ]
+    `
+})
+
+*/
+
+bot.command({
     name: "credits",
     aliases: ["thanks", "danke"],
     code: 
