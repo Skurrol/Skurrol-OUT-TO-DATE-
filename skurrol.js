@@ -287,3 +287,8 @@ bot.command({
 	$argsCheck[1;Usage: +volume <nummer>]
     `
 })
+
+/*
+     Andreas is gea *JOKE*
+     HMmmMmMmm Should i add NoobLink in here? 
+*/
