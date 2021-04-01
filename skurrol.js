@@ -24,6 +24,27 @@ bot.status({
     time: 30
 })
 
+bot.musicEndCommand({
+    channel: "$channelID",
+    code: `
+    $title[Stopped Song]
+    $description[Nothing to play in the queue anymore. Leaving voice channel.]
+    $color[RED]
+    `
+})
+
+bot.musicStartCommand({
+    channel: "$channelID",
+    code: `
+    $title[Playing Song]
+    $description[Playing: **$songInfo[title]**
+Lenght: **$songInfo[duration] Minutes**
+Uploaded by: **$songInfo[publisher]**]
+    $color[GREEN]
+    $thumbnail[$songInfo[thumbnail]]
+    `
+})
+
 bot.onMessage()
 
 bot.command({
@@ -33,12 +54,10 @@ bot.command({
     $description[📊 **__Status__**
     +ping
     +credits
-
     🔨 **__Moderation__**
     +ban
     +kick
     +clear <number>
-
     😂 **__Fun__**
     +mchead <Minecraft Name>]
     $footer[$randomText[; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ;☭ SOVIET UNION]]
@@ -98,13 +117,9 @@ bot.command({
     aliases: ["info", "i", "stats", "stat"],
     code: `$description[
         **Uptime:** $uptime
-
         **Cpu Usage:** $random[1.01;10.99]%
-
         **Ram Usage:** $random[19;43] MB
-
         **Ping:** $ping ms
-
         **Database ping:** $random[0;5] ms
     ]
     $color[$randomText[GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;ORANGE;ORANGE;ORANGE;ORANGE;ORANGE;ORANGE;RED;RED;RED;RED;RED;RED;RED;RED;RED;RED;RED;RED;RED]]
@@ -122,21 +137,9 @@ bot.command({
     code: `
     $argsCheck[>1;What tf do u want to debug]
     $eval[$message]
-    $onlyForIDs[$getVar[owner]]
+    $onlyForIDs[$getVar[owner];U don't have perms to use that bro. What did you expected to happen?]
     `
 })
-
-/*
-
-bot.command({
-    name: "debug",
-    code: `
-    $title[Hello guys welcome to my Minecraft projekt!]
-    $description[1.How to find Diamonds ]
-    `
-})
-
-*/
 
 bot.command({
     name: "credits",
@@ -149,9 +152,9 @@ bot.command({
         AndreasKiller253
         FOX
         NoZe
-
         **Api:**
         [FakeMC Network\\](https://fakemc.ml)
+        [Music Function -> German](https://github.com/byCRXHIT/discord-musik-bot-DE)
 
         **Art:**
         Dennis Dalinger
@@ -181,7 +184,7 @@ bot.command({
     code: `
     $image[http://mchost-fakemc.hook-server.cf/api=/meme=/$random[1;92].png]
     $footer[Debug: $random[1;92].png]
-    $cooldown[4s;Pleas do not abuse the bot!]
+    $cooldown[4s;Please do not abuse the bot!]
     `
 })
 
@@ -233,5 +236,54 @@ bot.command({
     $color[YELLOW]
     $description[The User <@$mentioned[1]> got kicked
 by <@$authorID>]
+    `
+})
+
+/*
+    Music
+    Section
+*/
+
+bot.command({
+    name: "play",
+	aliases: ["p"],
+    code: `
+    $playSong[$message;:x: Couldn play song. Please contact our support.]
+	$argsCheck[>1;Usage: +play <song name>]
+    `
+})
+
+bot.command({
+    name:"skip",
+	aliases: ["s", "sk"],
+    code:`
+    $skipSong
+    `
+})
+
+bot.command({
+    name: "stop",
+    code: `
+    $title[Stopped Song!]
+    $description[Song: $songInfo[title]]
+    $color[RED]
+    $stopSong
+    `
+})
+
+bot.command({
+	name: "volume",
+	aliases: ["v"],
+	code: `
+    $if[$message>100]
+	The volume can't be over 100%!
+	$elseIf[$message<1]
+	The Volume can't be lower than 0%!
+	$endelseIf
+	$else
+	Set the volume to $message[1]%.
+	$volume[$message]
+	$endif
+	$argsCheck[1;Usage: +volume <nummer>]
     `
 })
