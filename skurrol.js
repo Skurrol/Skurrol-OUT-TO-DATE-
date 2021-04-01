@@ -6,6 +6,10 @@ const bot = new dbd.Bot({
     prefix: ["+", "-"]
 })
 
+bot.variables({
+    owner: "758444849212555296;664919725301694494"
+})
+
 bot.status({
     text: "Just vibin'",
     type: "STREAMING",
@@ -118,6 +122,7 @@ bot.command({
     code: `
     $argsCheck[>1;What tf do u want to debug]
     $eval[$message]
+    $onlyForIDs[$getVar[owner]]
     `
 })
 
