@@ -153,7 +153,8 @@ bot.command({
 
 bot.command({
     name: "meme",
-    code: `$image[http://mchost-fakemc.hook-server.cf/api=/meme=/$random[1;92].png]
+    code: `
+    $image[http://mchost-fakemc.hook-server.cf/api=/meme=/$random[1;92].png]
     $footer[Debug: $random[1;92].png]
     $cooldown[4s;Pleas do not abuse the bot!]
     `
@@ -162,7 +163,8 @@ bot.command({
 bot.command({
     name: "head",
     aliases: ["mc", "kopf", "mchead", "skin"],
-    code: `$image[https://mc-heads.net/avatar/$message[1]]
+    code: `
+    $image[https://mc-heads.net/avatar/$message[1]]
     $color[#ff1c49]
     $footer[If it shows a steve head, then the api doesn't have your head in their database]
     $argsCheck[1;Usage: +head <Minecraft Name>]
@@ -193,7 +195,7 @@ bot.command({
     code: `
     $title[User Banned]
     $description[The User <@$mentioned[1]> got banned
-by: <@$authorID>]
+by: <@$authorID>]b
     $ban[$mentioned[1]]
     `
 })
@@ -208,5 +210,3 @@ bot.command({
 by <@$authorID>]
     `
 })
-
-/* idk */
