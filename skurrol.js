@@ -6,9 +6,33 @@ const bot = new dbd.Bot({
     prefix: ["+", "-"]
 })
 
+/*
+	- List of Errors -
+	
+	1024 - Missing arguments e.g +head byCRXHIT
+	Theese are arguments               ^^^^^^^^
+
+	403 - Forbidden it basiclly means u don't have 
+	permission to use that command
+*/
+
+/*
+    The "owner" is a list of all people
+    who needs acces to some commands that
+    are only for the bot admin
+    
+    E.g +debug
+*/
+
 bot.variables({
-    owner: "758444849212555296;664919725301694494"
+    owner: "758444849212555296;664919725301694494;622379759317418005"
 })
+
+/* 
+    I added the status twice
+    cause otherwise it would
+    crash and idk how to fix it
+*/
 
 bot.status({
     text: "Just vibin'",
@@ -23,6 +47,10 @@ bot.status({
     url: "https://twitch.tv/real_bycrxhit",
     time: 30
 })
+
+/*
+    Callback for music
+*/
 
 bot.musicEndCommand({
     channel: "$channelID",
@@ -60,48 +88,28 @@ bot.command({
     +kick
     +clear <number>
 
-    😂 **__Fun__**
+😂 **__Fun__**
     +mchead <Minecraft Name>]
 
-    🎶 **__Music__**
+🎶 **__Music__**
     +play <song name>
     +skip
     +stop
     +volume <number>
     
     $footer[$randomText[; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ;☭ SOVIET UNION]]
+    /*
+        - Code breakdown -
+
+        theese alot of spaced are like a "random" system
+        for the footer tag. It means it is rare to
+	get "☭ SOVIET UNION" as the footer.
+
+    */
     $image[https://cdn.discordapp.com/attachments/808766425199804458/821774775520460820/img_help.png]
     $color[#fb80ff]
     `
 })
-
-bot.command({
-    name: "help",
-    aliases: ["hel", "h", "holp", "he", "hep", "hilfe"],
-    code: `
-    $description[📊 **__Status__**
-+ping
-+credits
-
-🔨 **__Moderation__**
-+ban
-+kick
-+clear <number>
-
-😂? **__Fun__**
-+mchead <Minecraft Name>
-
-🎶 **__Music__**
-+play <song name>
-+skip
-+stop
-+volume <number>]
-    $footer[$randomText[; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ;? SOVIET UNION]]
-    $image[https://cdn.discordapp.com/attachments/808766425199804458/821774775520460820/img_help.png]
-    $color[#fb80ff]
-    `
-})
-
 
 /*
     Status
@@ -155,7 +163,7 @@ bot.command({
     code: `$description[
         **Uptime:** $uptime
 
-        **Cpu Usage:** $random[1.01;10.99]%
+        **Cpu Usage:** $cpu%
 
         **Ram Usage:** $random[19;43] MB
 
@@ -164,6 +172,13 @@ bot.command({
         **Database ping:** $random[0;5] ms
     ]
     $color[$randomText[GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;ORANGE;ORANGE;ORANGE;ORANGE;ORANGE;ORANGE;RED;RED;RED;RED;RED;RED;RED;RED;RED;RED;RED;RED;RED]]
+    /*
+    
+	- Code Breakdown -
+
+	same as here with the soviet union secret.
+	it is rare to get the red color as the embed
+    */
     $cooldown[10s;Please do not abuse this command! Wait %time% to use it again!]
     `
 })
@@ -176,7 +191,8 @@ bot.command({
 bot.command({
     name: "debug",
     code: `
-    $argsCheck[>1;What tf do u want to debug]
+    $argsCheck[>1;Error 1024, missing, wrong or too many arguments
+What tf do u want to debug]
     $eval[$message]
     $onlyForIDs[$getVar[owner];U don't have perms to use that bro. What did you expected to happen?]
     `
@@ -184,15 +200,15 @@ bot.command({
 
 bot.command({
     name: "credits",
-    aliases: ["thanks", "danke"],
+    aliases: ["thanks", "danke", "contributor", "contributors"],
     code: 
     `
     $description[
         **Coding:**
         byCRXHIT
         AndreasKiller253
-        FOX
         NoZe
+
         **Api:**
         [FakeMC Network\\](https://fakemc.ml)
         [Music Function -> German](https://github.com/byCRXHIT/discord-musik-bot-DE)
@@ -225,7 +241,7 @@ bot.command({
     code: `
     $image[http://mchost-fakemc.hook-server.cf/api=/meme=/$random[1;92].png]
     $footer[Debug: $random[1;92].png]
-    $cooldown[4s;Please do not abuse the bot!]
+    $cooldown[4s;Please do not abuse that command!]
     `
 })
 
@@ -236,7 +252,7 @@ bot.command({
     $image[https://mc-heads.net/avatar/$message[1]]
     $color[#ff1c49]
     $footer[If it shows a steve head, then the api doesn't have your head in their database]
-    $argsCheck[1;Usage: +head <Minecraft Name>]
+    $argsCheck[1;Error 1024, missing, wrong or too many arguments]
     `
 })
 
