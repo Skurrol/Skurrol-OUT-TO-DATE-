@@ -52,10 +52,10 @@ bot.command({
     aliases: ["hel", "h", "holp", "he", "hep", "hilfe"],
     code: `
     $description[📊 **__Status__**
-    +ping
-    +credits
++ping
++credits
 
-    🔨 **__Moderation__**
+🔨 **__Moderation__**
     +ban
     +kick
     +clear <number>
@@ -74,6 +74,34 @@ bot.command({
     $color[#fb80ff]
     `
 })
+
+bot.command({
+    name: "help",
+    aliases: ["hel", "h", "holp", "he", "hep", "hilfe"],
+    code: `
+    $description[📊 **__Status__**
++ping
++credits
+
+🔨 **__Moderation__**
++ban
++kick
++clear <number>
+
+😂? **__Fun__**
++mchead <Minecraft Name>
+
+🎶 **__Music__**
++play <song name>
++skip
++stop
++volume <number>]
+    $footer[$randomText[; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ;? SOVIET UNION]]
+    $image[https://cdn.discordapp.com/attachments/808766425199804458/821774775520460820/img_help.png]
+    $color[#fb80ff]
+    `
+})
+
 
 /*
     Status
@@ -126,9 +154,13 @@ bot.command({
     aliases: ["info", "i", "stats", "stat"],
     code: `$description[
         **Uptime:** $uptime
+
         **Cpu Usage:** $random[1.01;10.99]%
+
         **Ram Usage:** $random[19;43] MB
+
         **Ping:** $ping ms
+
         **Database ping:** $random[0;5] ms
     ]
     $color[$randomText[GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;ORANGE;ORANGE;ORANGE;ORANGE;ORANGE;ORANGE;RED;RED;RED;RED;RED;RED;RED;RED;RED;RED;RED;RED;RED]]
@@ -300,4 +332,5 @@ bot.command({
 /*
      Andreas is gea *JOKE*
      HMmmMmMmm Should i add NoobLink in here? 
+     Aus dem weg ihr geringverdiener
 */
