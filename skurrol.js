@@ -357,4 +357,18 @@ bot.command({
     $endif
     `
 })
-//hello
+/*hello
+hello Anton :>
+*/
+
+bot.command({
+    name: "log",
+    code: `
+    $title[Last Chnage]
+    $description[**Commited by:** byCRXHIT
+
+**Extra commit message:** Added +log
+
+**Commited at:** 03.04.2021 21:56]
+    `
+})
