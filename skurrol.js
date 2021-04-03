@@ -208,8 +208,10 @@ bot.command({
         
         **Ideas:**
         AToha1
+
         **Donators:**
         AndreasKiller253
+
         **Copyright:**
         © 2021 byCRXHIT Software. All right reserved.
         All images are self made and copyrighted.
