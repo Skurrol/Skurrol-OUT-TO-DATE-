@@ -211,7 +211,7 @@ bot.command({
 
         **Api:**
         [FakeMC Network\\](https://fakemc.ml)
-        [Music Function -> German](https://github.com/byCRXHIT/discord-musik-bot-DE)
+        [Music Function -> German\\](https://github.com/byCRXHIT/discord-musik-bot-DE)
 
         **Art:**
         Dennis Dalinger
