@@ -11,7 +11,6 @@ const bot = new dbd.Bot({
 	
 	1024 - Missing arguments e.g +head byCRXHIT
 	Theese are arguments               ^^^^^^^^
-
 	403 - Forbidden it basiclly means u don't have 
 	permission to use that command
 */
@@ -25,6 +24,8 @@ const bot = new dbd.Bot({
 */
 
 bot.variables({
+    playing: "0",
+    queue: "0",
     owner: "758444849212555296;664919725301694494;622379759317418005"
 })
 
@@ -80,8 +81,8 @@ bot.command({
     aliases: ["hel", "h", "holp", "he", "hep", "hilfe"],
     code: `
     $description[📊 **__Status__**
-+ping
-+credits
+    +ping
+    +credits
 
 🔨 **__Moderation__**
     +ban
@@ -89,7 +90,7 @@ bot.command({
     +clear <number>
 
 😂 **__Fun__**
-    +mchead <Minecraft Name>]
+    +mchead <Minecraft Name>
 
 🎶 **__Music__**
     +play <song name>
@@ -100,11 +101,9 @@ bot.command({
     $footer[$randomText[; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ;☭ SOVIET UNION]]
     /*
         - Code breakdown -
-
         theese alot of spaced are like a "random" system
         for the footer tag. It means it is rare to
 	get "☭ SOVIET UNION" as the footer.
-
     */
     $image[https://cdn.discordapp.com/attachments/808766425199804458/821774775520460820/img_help.png]
     $color[#fb80ff]
@@ -169,16 +168,8 @@ bot.command({
 
         **Ping:** $ping ms
 
-        **Database ping:** $random[0;5] ms
-    ]
-    $color[$randomText[GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;GREEN;ORANGE;ORANGE;ORANGE;ORANGE;ORANGE;ORANGE;RED;RED;RED;RED;RED;RED;RED;RED;RED;RED;RED;RED;RED]]
-    /*
-    
-	- Code Breakdown -
-
-	same as here with the soviet union secret.
-	it is rare to get the red color as the embed
-    */
+        **Database ping:** $random[1;5] ms]
+    $color[GREEN]
     $cooldown[10s;Please do not abuse this command! Wait %time% to use it again!]
     `
 })
@@ -207,7 +198,6 @@ bot.command({
         **Coding:**
         byCRXHIT
         AndreasKiller253
-        NoZe
 
         **Api:**
         [FakeMC Network\\](https://fakemc.ml)
@@ -218,10 +208,8 @@ bot.command({
         
         **Ideas:**
         AToha1
-
         **Donators:**
         AndreasKiller253
-
         **Copyright:**
         © 2021 byCRXHIT Software. All right reserved.
         All images are self made and copyrighted.
@@ -305,7 +293,7 @@ bot.command({
     name: "play",
 	aliases: ["p"],
     code: `
-    $playSong[$message;:x: Couldn play song. Please contact our support.]
+    $playSong[$message;:x: Couldn play the song. Please contact our support.]
 	$argsCheck[>1;Usage: +play <song name>]
     `
 })
@@ -345,8 +333,25 @@ bot.command({
     `
 })
 
-/*
-     Andreas is gea *JOKE*
-     HMmmMmMmm Should i add NoobLink in here? 
-     Aus dem weg ihr geringverdiener
-*/
+bot.command({
+    name: "loop",
+    code: `
+    $if[$getServarVar[queue]==0]
+    The Queue is now getting looped
+    $setServerVar[queue;1]
+    Debug For Developers:
+	$loopQueue
+    $elseIf[$getServerVar[queue]==1]
+    Removed the loop from the queue.
+    $setServerVar[queue;0]
+    Debug For Developers:
+	$loopQueue
+    $endelseIf
+    $else
+    The Queue is now getting looped
+    $setServerVar[queue;1]
+    Debug For Developers:
+	$loopQueue
+    $endif
+    `
+})
