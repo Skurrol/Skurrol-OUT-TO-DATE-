@@ -357,4 +357,4 @@ bot.command({
     $endif
     `
 })
-//moin
+//hello
