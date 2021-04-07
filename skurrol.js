@@ -56,7 +56,7 @@ bot.status({
 })
 
 bot.rateLimitCommand({ 
-    channel: "803546569197486089",
+    channel: "803546569197486086",
     code: `
     Bot got rate limited!
     Timeout: $rateLimt[timeout]
@@ -65,11 +65,11 @@ bot.rateLimitCommand({
     Path: $rateLimit[path]
     Route: $rateLimit[route]
     `
-    })
+})
 bot.onRateLimit()
 
 bot.readyCommand({
-    channel: "772414449839636490",
+    channel: "803546569197486086",
     code: `
     Succesfully Restarted bot!
     `
