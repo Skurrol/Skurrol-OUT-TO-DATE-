@@ -49,6 +49,24 @@ bot.status({
     time: 30
 })
 
+bot.rateLimitCommand({ 
+    channel: "803546569197486089",
+    code: `
+    Bot got rate limited!
+    Timeout: $rateLimt[timeout]
+    Limit: $rateLimit[limit]
+    Method: $rateLimit[method]
+    Path: $rateLimit[path]
+    Route: $rateLimit[route]
+    `
+    })
+bot.onRateLimit()
+
+bot.readyCommand({
+    channel: "772414449839636490",
+    code: `Succesfully Restarted bot!`
+})
+
 /*
     Callback for music
 */
