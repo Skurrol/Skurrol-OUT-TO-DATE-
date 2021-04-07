@@ -359,15 +359,3 @@ bot.command({
 /*hello
 hello Anton :>
 */
-
-bot.command({
-    name: "log",
-    code: `
-    $title[Last Chnage]
-    $description[**Commited by:** byCRXHIT
-
-**Extra commit message:** +help fixed
-
-**Commited at:** 07.04.2021 12:35]
-    `
-})
