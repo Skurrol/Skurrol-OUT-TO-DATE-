@@ -139,6 +139,7 @@ bot.command({
     +ban
     +kick
     +clear <number>
+    +rradd <messageID> <emoji> <@role>
 
     😂 **__Fun__**
     +snipe
@@ -357,35 +358,35 @@ bot.command({
     $color[RANDOM]
     $title[About The Server]
     $description[
-        📝 **Name:** 
-        $serverName
+    📝 **Name:** 
+    $serverName
 
-        😎 **Emojis:**
-        $serverEmojis
+    😎 **Emojis:**
+    $serverEmojis
 
-        🌎 **Server Region:**
-        $serverRegion
+    🌎 **Server Region:**
+    $serverRegion
 
-        👮 **Security Level:**
-        $serverVerificationLevel
+    👮 **Security Level:**
+    $serverVerificationLevel
 
-        🔥 **Channels:**
-        $channelCount[category] Categories
-        $channelCount[text] Text Channels
-        $channelCount[voice] Voice Channels
+    🔥 **Channels:**
+    $channelCount[category] Categories
+    $channelCount[text] Text Channels
+    $channelCount[voice] Voice Channels
 
-        ⏫💖 **Boost Level:**
-        Level $serverBoostLevel
+    ⏫💖 **Boost Level:**
+    Level $serverBoostLevel
 
-        💖 **Boosts:**
-        $serverBoostCount Boosts
+    💖 **Boosts:**
+    $serverBoostCount Boosts
 
-        📊 **Members:**
-        $membersCount Members
-        $botCount Bots
+    📊 **Members:**
+    $membersCount Members
+    $botCount Bots
 
-        🔨 **Bans:**
-        $banCount Bans]
+    🔨 **Bans:**
+    $banCount Bans]
     `
 })
 
