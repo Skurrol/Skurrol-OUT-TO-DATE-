@@ -84,20 +84,19 @@ bot.command({
     +ping
     +credits
 
-🔨 **__Moderation__**
+    🔨 **__Moderation__**
     +ban
     +kick
     +clear <number>
 
-😂 **__Fun__**
+    😂 **__Fun__**
     +mchead <Minecraft Name>
 
-🎶 **__Music__**
+    🎶 **__Music__**
     +play <song name>
     +skip
     +stop
     +volume <number>]
-    $footer[$randomText[; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ;☭ SOVIET UNION]]
     $image[https://cdn.discordapp.com/attachments/808766425199804458/821774775520460820/img_help.png]
     $color[#fb80ff]
     `
@@ -207,8 +206,7 @@ bot.command({
 
         **Copyright:**
         © 2021 byCRXHIT Software. All right reserved.
-        All images are self made and copyrighted.
-    ]
+        All images are self made and copyrighted.]
     $image[https://cdn.discordapp.com/attachments/808766425199804458/824618643522453564/Thanks-to.png]
     $color[PURPLE]
     `
