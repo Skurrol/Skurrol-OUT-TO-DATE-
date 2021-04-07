@@ -366,8 +366,8 @@ bot.command({
     $title[Last Chnage]
     $description[**Commited by:** byCRXHIT
 
-**Extra commit message:** Added +log
+**Extra commit message:** +help fixed
 
-**Commited at:** 03.04.2021 21:56]
+**Commited at:** 07.04.2021 12:35]
     `
 })
