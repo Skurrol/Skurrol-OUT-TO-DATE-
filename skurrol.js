@@ -26,7 +26,13 @@ const bot = new dbd.Bot({
 bot.variables({
     playing: "0",
     queue: "0",
-    owner: "758444849212555296;664919725301694494;622379759317418005"
+    owner: "758444849212555296;664919725301694494;622379759317418005",
+    snipe_msg: "",
+    snipe_author: "",
+    snipe_channel: "",
+    snipe_date: "",
+    msgEditorID: "undefined",
+    esnipeOldMsg: "undefined"
 })
 
 /* 
@@ -64,8 +70,34 @@ bot.onRateLimit()
 
 bot.readyCommand({
     channel: "772414449839636490",
-    code: `Succesfully Restarted bot!`
+    code: `
+    Succesfully Restarted bot!
+    `
 })
+
+/*
+    Callbacks for Snipe Function
+*/
+
+bot.updateCommand({
+    channel: "$channelID",
+    code: `
+    $setChannelVar[msgEditorID;$authorID]
+    $setChannelVar[esnipeOldMsg;$oldMessage]
+    `
+})
+bot.onMessageUpdate();
+
+bot.deletedCommand({
+    channel: "$channelID",
+    code: `
+    $setChannelVar[snipe_msg;$message]
+    $setChannelVar[snipe_author;$authorID]
+    $setChannelVar[snipe_channel;$channelID]
+    $setChannelVar[snipe_date;$day $month $year - $hour:$minute]
+    `
+});
+bot.onMessageDelete();
 
 /*
     Callback for music
@@ -108,6 +140,9 @@ bot.command({
     +clear <number>
 
     😂 **__Fun__**
+    +snipe
+    +editsnipe
+    +quote <Message Link>
     +mchead <Minecraft Name>
 
     🎶 **__Music__**
@@ -188,6 +223,43 @@ bot.command({
     Extra
     Section
 */
+
+bot.command({
+    name: "snipe",
+    code: `
+    $color[RANDOM]
+    $author[$userTag[$getChannelVar[snipe_author;$mentionedChannels[1;yes]]];$userAvatar[$getChannelVar[snipe_author;$mentionedChannels[1;yes]]]]
+    $description[$getChannelVar[snipe_msg;$mentionedChannels[1;yes]]]
+    $footer[#$channelName[$getChannelVar[snipe_channel;$mentionedChannels[1;yes]]] | $getChannelVar[snipe_date;$mentionedChannels[1;yes]]]
+    $onlyIf[$getChannelVar[snipe_msg;$mentionedChannels[1;yes]]!=;Theres nothing to snipe in <#$mentionedChannels[1;yes]>]
+`
+})
+
+bot.command({
+    name: "quote",
+    code: `
+    $author[$userTag[$getMessage[$replaceText[$replaceText[$checkContains[$message;https://discord.com/channels/;https://ptb.discord.com/channels/];true;$splitText[6]];false;$mentionedChannels[1;yes]];$replaceText[$replaceText[$checkContains[$message;https://discord.com/channels/;https://ptb.discord.com/channels/];true;$splitText[7]];false;$noMentionMessage];userID]];$userAvatar[$getMessage[$replaceText[$replaceText[$checkContains[$message;https://discord.com/channels/;https://ptb.discord.com/channels/];true;$splitText[6]];false;$mentionedChannels[1;yes]];$replaceText[$replaceText[$checkContains[$message;https://discord.com/channels/;https://ptb.discord.com/channels/];true;$splitText[7]];false;$noMentionMessage];userID]]]
+    $description[$getMessage[$replaceText[$replaceText[$checkContains[$message;https://discord.com/channels/;https://ptb.discord.com/channels/];true;$splitText[6]];false;$mentionedChannels[1;yes]];$replaceText[$replaceText[$checkContains[$message;https://discord.com/channels/;https://ptb.discord.com/channels/];true;$splitText[7]];false;$noMentionMessage];content]
+    [Jump to message\\]($replaceText[$replaceText[$checkContains[$message;https://discord.com/channels/;https://ptb.discord.com/channels/];true;$message];false;https://discord.com/channels/$guildID/$mentionedChannels[1;yes]/$noMentionMessage])]
+    $textSplit[$message;/]
+    $color[RANDOM]
+    $suppressErrors[**⛔ Could not find message**]
+    `
+})
+
+bot.command({
+    name: "editsnipe",
+    aliases: ["esnipe"],
+    code: `
+    $author[$username[$getChannelVar[msgEditorID]]#$discriminator[$getChannelVar[msgEditorID]];$userAvatar[$getChannelVar[msgEditorID]]]
+    $description[$getChannelVar[esnipeOldMsg]]
+    $addTimestamp
+    $color[RANDOM]
+    $onlyIf[$getChannelVar[esnipeOldMsg]!=undefinied;{description: there is nothing to snipe}{color: RED}]
+    $onlyIf[$getChannelVar[msgEditorID]!=undefinied;{description: there is nothing to snipe}{color: RED}]
+    $suppressErrors[There is nothing to snipe]
+    `
+})
 
 bot.command({
     name: "debug",
