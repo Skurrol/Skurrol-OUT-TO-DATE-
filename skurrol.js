@@ -32,7 +32,8 @@ bot.variables({
     snipe_channel: "",
     snipe_date: "",
     msgEditorID: "undefined",
-    esnipeOldMsg: "undefined"
+    esnipeOldMsg: "undefined",
+    rr1: "none"
 })
 
 /* 
@@ -150,7 +151,6 @@ bot.command({
     +skip
     +stop
     +volume <number>]
-    $image[https://cdn.discordapp.com/attachments/808766425199804458/821774775520460820/img_help.png]
     $color[#fb80ff]
     `
 })
@@ -232,7 +232,7 @@ bot.command({
     $description[$getChannelVar[snipe_msg;$mentionedChannels[1;yes]]]
     $footer[#$channelName[$getChannelVar[snipe_channel;$mentionedChannels[1;yes]]] | $getChannelVar[snipe_date;$mentionedChannels[1;yes]]]
     $onlyIf[$getChannelVar[snipe_msg;$mentionedChannels[1;yes]]!=;Theres nothing to snipe in <#$mentionedChannels[1;yes]>]
-`
+    `
 })
 
 bot.command({
@@ -324,6 +324,68 @@ bot.command({
     $color[#ff1c49]
     $footer[If it shows a steve head, then the api doesn't have your head in their database]
     $argsCheck[1;Error 1024, missing, wrong or too many arguments]
+    `
+})
+
+bot.command({
+    name: "rradd",
+    code: `
+     **I add <@&$getServerVar[rr1]>** Remmber if you add another reaction role this will cancelled
+    $reactionCollector[$message[1];everyone;24d;$message[2];RR1;no]
+    $setServerVar[rr1;$mentionedRoles[1]]
+    $argsCheck[3; **Wrong Usage** | please use: \`+rradd <messageID> <emoji> <@role>\`]
+    $suppressErrors[ **There is a problem** | make sure you wrote correctly: \`+rradd <messageID> <emoji> <@role>\`
+    or check If I have enough Permissions to give this role or add reactions]
+    $onlyPerms[manageserver;**Error 403, Frobidden,**
+You don't have enough permission to use this command!
+You need: __Manage Server__]    
+    `
+})
+    
+bot.awaitedCommand({
+     name: "RR1",
+     code: `
+     $giveRoles[$authorID;$getServerVar[rr1]]
+    `    
+})
+
+bot.command({
+    name: "serverinfo",
+    aliases: ["server", "servinfo"],
+    code: `
+    $thumbnail[$serverIcon]
+    $color[RANDOM]
+    $title[About The Server]
+    $description[
+        📝 **Name:** 
+        $serverName
+
+        😎 **Emojis:**
+        $serverEmojis
+
+        🌎 **Server Region:**
+        $serverRegion
+
+        👮 **Security Level:**
+        $serverVerificationLevel
+
+        🔥 **Channels:**
+        $channelCount[category] Categories
+        $channelCount[text] Text Channels
+        $channelCount[voice] Voice Channels
+
+        ⏫💖 **Boost Level:**
+        Level $serverBoostLevel
+
+        💖 **Boosts:**
+        $serverBoostCount Boosts
+
+        📊 **Members:**
+        $membersCount Members
+        $botCount Bots
+
+        🔨 **Bans:**
+        $banCount Bans]
     `
 })
 
@@ -441,3 +503,11 @@ bot.command({
 /*hello
 hello Anton :>
 */
+
+bot.command({
+    name: "kill",
+    code: `
+    $reboot[skurrol.js]
+    $onlyForIDs[$getVar[owner]]
+    `
+})
