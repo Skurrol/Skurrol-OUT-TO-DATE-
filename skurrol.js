@@ -101,12 +101,6 @@ bot.command({
     $image[https://cdn.discordapp.com/attachments/808766425199804458/821774775520460820/img_help.png]
     $color[#fb80ff]
     `
-    /*
-        - Code breakdown -
-        theese alot of spaced are like a "random" system
-        for the footer tag. It means it is rare to
-	    get "☭ SOVIET UNION" as the footer.
-    */
 })
 
 /*
