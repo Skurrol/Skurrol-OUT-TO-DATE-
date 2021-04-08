@@ -414,8 +414,9 @@ bot.command({
     code: `
     $title[User Banned]
     $description[The User <@$mentioned[1]> got banned
-by: <@$authorID>]b
+by: <@$authorID>]
     $ban[$mentioned[1]]
+    $argsCheck[1;Error 1024, missing, wrong or too many arguments]
     `
 })
 
@@ -427,6 +428,7 @@ bot.command({
     $color[YELLOW]
     $description[The User <@$mentioned[1]> got kicked
 by <@$authorID>]
+    $argsCheck[1;Error 1024, missing, wrong or too many arguments]
     `
 })
 
