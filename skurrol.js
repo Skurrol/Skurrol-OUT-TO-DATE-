@@ -147,6 +147,11 @@ bot.command({
     +kick
     +clear <number>
     +rradd <messageID> <emoji> <@role>
+    
+    🔇 **__Mute_**
+    +set-mute @mute_role
+    +mute @user
+    +unmute @role
 
     😂 **__Fun__**
     +snipe
