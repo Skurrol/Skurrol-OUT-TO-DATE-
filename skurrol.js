@@ -26,7 +26,7 @@ const bot = new dbd.Bot({
 bot.variables({
     playing: "0",
     queue: "0",
-    owner: "758444849212555296;664919725301694494;622379759317418005",
+    owner: "758444849212555296;664919725301694494;668495490429747240",
     snipe_msg: "",
     snipe_author: "",
     snipe_channel: "",
