@@ -13,6 +13,7 @@ const bot = new dbd.Bot({
 	Theese are arguments               ^^^^^^^^
 	403 - Forbidden it basiclly means u don't have 
 	permission to use that command
+    404 - Not Found
 */
 
 /*
@@ -33,7 +34,8 @@ bot.variables({
     snipe_date: "",
     msgEditorID: "undefined",
     esnipeOldMsg: "undefined",
-    rr1: "none"
+    rr1: "none",
+    mute: "1"
 })
 
 /* 
@@ -249,7 +251,7 @@ bot.command({
     [Jump to message]($replaceText[$replaceText[$checkContains[$message;https://discord.com/channels/;https://ptb.discord.com/channels/];true;$message];false;https://discord.com/channels/$guildID/$mentionedChannels[1;yes]/$noMentionMessage])]
     $textSplit[$message;/]
     $color[RANDOM]
-    $suppressErrors[**⛔ Could not find message**]
+    $suppressErrors[Error 404,, Message not found]
     `
 })
 
@@ -263,7 +265,7 @@ bot.command({
     $color[RANDOM]
     $onlyIf[$getChannelVar[esnipeOldMsg]!=undefinied;{description: there is nothing to snipe}{color: RED}]
     $onlyIf[$getChannelVar[msgEditorID]!=undefinied;{description: there is nothing to snipe}{color: RED}]
-    $suppressErrors[There is nothing to snipe]
+    $suppressErrors[There is nothing to snipe yet]
     `
 })
 
@@ -279,7 +281,7 @@ What tf do u want to debug]
 
 bot.command({
     name: "credits",
-    aliases: ["thanks", "danke", "contributor", "contributors"],
+    aliases: ["thanks", "danke", "contributor", "contributors", "github", "commit", "commiter"],
     code: 
     `
     $description[
@@ -348,7 +350,7 @@ You don't have enough permission to use this command!
 You need: __Manage Server__]    
     `
 })
-    
+
 bot.awaitedCommand({
      name: "RR1",
      code: `
@@ -438,6 +440,42 @@ by <@$authorID>]
     `
 })
 
+bot.command({
+    name: "mute",
+    code: `
+    $if[$getServerVar[mute]==1]
+    Please set the mute role first!
+    Use: +set-mute <@role>
+    $else
+    $giveRole[$mentioned[1];$getServerVar[mute]]
+    Muted <@mentioned[1]>
+    $endIf
+    `
+})
+
+bot.command({
+    name: "unmute",
+    aliases: ["un-mute", "pardon"],
+    code: `
+    $if[$getServerVar[mute]==1]
+    Please set the mute role first!
+    Use: +set-mute <@roleID>
+    $else
+    $takeRole[$mentioned[1];$getServerVar[mute]]
+    Un-Muted <@mentioned[1]>
+    $endIf
+    `
+})
+
+bot.command({
+    name: "set-mute",
+    code: `
+    $setServerVar[mute;$mentionedRoles[1]]
+    Succesfully set the Mute Role!
+    Mute Role ID: $mentionedRoles[1]
+    `
+})
+
 /*
     Music
     Section
@@ -509,9 +547,6 @@ bot.command({
     $endif
     `
 })
-/*hello
-hello Anton :>
-*/
 
 bot.command({
     name: "kill",
@@ -520,3 +555,15 @@ bot.command({
     $onlyForIDs[$getVar[owner]]
     `
 })
+
+/*
+    Schnapp macht das krokodil, das krokodil macht schnapp
+    egal was du hast, gib ihm was ab
+    Schnapp macht das krokodil, das krokodil macht schnapp
+    alle wissen was er macht,
+    das kroko,
+    er dealt wieder in der Nachbarschaft
+
+    ______________________________
+    JESUS UND DIE 187 PRIESERBANDE
+*/
