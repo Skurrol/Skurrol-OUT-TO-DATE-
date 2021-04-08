@@ -72,7 +72,12 @@ bot.onRateLimit()
 bot.readyCommand({
     channel: "803546569197486086",
     code: `
-    Succesfully Restarted bot!
+$description[Succesfully Restarted bot!
+Connected to Web Socket.
+
+Connected API's:
+[FakeMC Network](http://mchost-fakemc.hook-server.cf)
+[MC Head Database](https://mc-heads.net)]
     `
 })
 
@@ -241,7 +246,7 @@ bot.command({
     code: `
     $author[$userTag[$getMessage[$replaceText[$replaceText[$checkContains[$message;https://discord.com/channels/;https://ptb.discord.com/channels/];true;$splitText[6]];false;$mentionedChannels[1;yes]];$replaceText[$replaceText[$checkContains[$message;https://discord.com/channels/;https://ptb.discord.com/channels/];true;$splitText[7]];false;$noMentionMessage];userID]];$userAvatar[$getMessage[$replaceText[$replaceText[$checkContains[$message;https://discord.com/channels/;https://ptb.discord.com/channels/];true;$splitText[6]];false;$mentionedChannels[1;yes]];$replaceText[$replaceText[$checkContains[$message;https://discord.com/channels/;https://ptb.discord.com/channels/];true;$splitText[7]];false;$noMentionMessage];userID]]]
     $description[$getMessage[$replaceText[$replaceText[$checkContains[$message;https://discord.com/channels/;https://ptb.discord.com/channels/];true;$splitText[6]];false;$mentionedChannels[1;yes]];$replaceText[$replaceText[$checkContains[$message;https://discord.com/channels/;https://ptb.discord.com/channels/];true;$splitText[7]];false;$noMentionMessage];content]
-    [Jump to message\\]($replaceText[$replaceText[$checkContains[$message;https://discord.com/channels/;https://ptb.discord.com/channels/];true;$message];false;https://discord.com/channels/$guildID/$mentionedChannels[1;yes]/$noMentionMessage])]
+    [Jump to message]($replaceText[$replaceText[$checkContains[$message;https://discord.com/channels/;https://ptb.discord.com/channels/];true;$message];false;https://discord.com/channels/$guildID/$mentionedChannels[1;yes]/$noMentionMessage])]
     $textSplit[$message;/]
     $color[RANDOM]
     $suppressErrors[**⛔ Could not find message**]
@@ -283,8 +288,9 @@ bot.command({
         AndreasKiller253
 
         **Api:**
-        [FakeMC Network\\](https://fakemc.ml)
-        [Music Function -> German\\](https://github.com/byCRXHIT/discord-musik-bot-DE)
+        [FakeMC Network](https://fakemc.ml)
+        [Music Function -> German](https://github.com/byCRXHIT/discord-musik-bot-DE)
+        [MC Head Database](https://mc-heads.net)
 
         **Art:**
         Dennis Dalinger
