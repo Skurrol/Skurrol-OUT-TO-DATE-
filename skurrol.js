@@ -148,7 +148,7 @@ bot.command({
     +clear <number>
     +rradd <messageID> <emoji> <@role>
     
-    🔇 **__Mute_**
+    🔇 **__Mute__**
     +set-mute @mute_role
     +mute @user
     +unmute @role
