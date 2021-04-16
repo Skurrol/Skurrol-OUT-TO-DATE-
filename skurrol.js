@@ -324,8 +324,8 @@ bot.command({
 bot.command({
     name: "meme",
     code: `
-    $image[http://mchost-fakemc.hook-server.cf/api=/meme=/$random[1;92].png]
-    $footer[Debug: $random[1;92].png]
+    $image[http://ns01.bycrxhit.de/api=/meme=/$random[1;92].png]
+    $footer[Debug: $random[1;95].png]
     $cooldown[4s;Please do not abuse that command!]
     `
 })
