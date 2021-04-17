@@ -138,7 +138,8 @@ bot.command({
     name: "help",
     aliases: ["hel", "h", "holp", "he", "hep", "hilfe"],
     code: `
-    $description[📊 **__Status__**
+    $description[
+    📊 **__Status__**
     +ping
     +credits
 
@@ -146,6 +147,7 @@ bot.command({
     +ban
     +kick
     +clear <number>
+    +nuke
     +rradd <messageID> <emoji> <@role>
     
     🔇 **__Mute__**
@@ -169,8 +171,10 @@ bot.command({
 })
 
 /*
-    Status
-    Section
+    📊📊📊📊📊📊📊📊📊📊📊📊📊📊📊📊📊📊📊📊📊📊📊
+                            Status
+                            Section
+    📊📊📊📊📊📊📊📊📊📊📊📊📊📊📊📊📊📊📊📊📊📊📊
 */
 
 bot.command({
@@ -317,8 +321,10 @@ bot.command({
 })
 
 /* 
-    Fun
-    Section
+    😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂
+                            Fun
+                          Section
+    😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂
 */
 
 bot.command({
@@ -404,9 +410,26 @@ bot.command({
 })
 
 /*
-    Moderation
-    Section
+    🔨🔨🔨🔨🔨🔨🔨🔨🔨🔨🔨🔨🔨🔨🔨🔨🔨
+                Moderation
+                 Section
+    🔨🔨🔨🔨🔨🔨🔨🔨🔨🔨🔨🔨🔨🔨🔨🔨🔨
 */
+
+bot.command({
+    name: "nuke",
+    aliases: ["bomb"],
+    code: `
+    $title[Succesfully nuked!]
+    $description[
+    I've nuked this channel and 
+    ngl it now looks much cleaner]
+    $color[RANDOM]
+    $thumbnail[https://cdn.glitch.com/f6f7af7e-9d14-4509-a678-261644493ac1%2FMessages-Deleted.png?v=1618690698239]
+    $clear[200]
+    $deleteIn[5s]
+    `
+})
 
 bot.command({
     name: "clear",
