@@ -416,6 +416,8 @@ bot.command({
     🔨🔨🔨🔨🔨🔨🔨🔨🔨🔨🔨🔨🔨🔨🔨🔨🔨
 */
 
+//Fvck MEE6, all my homies are using Skurrol.
+
 bot.command({
     name: "nuke",
     aliases: ["bomb"],
@@ -425,7 +427,7 @@ bot.command({
     I've nuked this channel and 
     ngl it now looks much cleaner]
     $color[RANDOM]
-    $thumbnail[https://cdn.glitch.com/f6f7af7e-9d14-4509-a678-261644493ac1%2FMessages-Deleted.png?v=1618690698239]
+    $thumbnail[https://cdn.glitch.com/f6f7af7e-9d14-4509-a678-261644493ac1%2FMessages-Deleted.png?v=1618690962837]
     $clear[200]
     $deleteIn[5s]
     `
