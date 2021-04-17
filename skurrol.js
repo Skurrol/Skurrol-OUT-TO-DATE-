@@ -11,8 +11,10 @@ const bot = new dbd.Bot({
 	
 	1024 - Missing arguments e.g +head byCRXHIT
 	Theese are arguments               ^^^^^^^^
+
 	403 - Forbidden it basiclly means u don't have 
 	permission to use that command
+
     404 - Not Found
 */
 
@@ -48,14 +50,14 @@ bot.status({
     text: "Just vibin'",
     type: "STREAMING",
     url: "https://twitch.tv/real_bycrxhit",
-    time: 30
+    time: 10
 })
 
 bot.status({
-    text: "Just vibin'", 
+    text: "MEE6? We habe Skurrol!", 
     type: "STREAMING", 
     url: "https://twitch.tv/real_bycrxhit",
-    time: 30
+    time: 10
 })
 
 bot.rateLimitCommand({ 
