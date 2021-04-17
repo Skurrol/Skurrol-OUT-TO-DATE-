@@ -54,9 +54,9 @@ bot.status({
 })
 
 bot.status({
-    text: "MEE6? We habe Skurrol!", 
-    type: "STREAMING", 
-    url: "https://twitch.tv/real_bycrxhit",
+    text: "a fight against MEE6",
+    type: "COMPETING",
+    status: "idle",
     time: 10
 })
 
