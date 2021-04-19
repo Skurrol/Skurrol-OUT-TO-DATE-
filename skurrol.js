@@ -1,8 +1,7 @@
 const dbd = require("dbd.js")
-const config = require('./config.json')
 
 const bot = new dbd.Bot({
-    token: config.token, 
+    token: process.env.token, 
     prefix: ["+", "-"]
 })
 
@@ -54,7 +53,7 @@ bot.status({
 })
 
 bot.status({
-    text: "a fight against MEE6",
+    text: "against MEE6",
     type: "COMPETING",
     status: "idle",
     time: 10
@@ -63,7 +62,8 @@ bot.status({
 bot.rateLimitCommand({ 
     channel: "803546569197486086",
     code: `
-    Bot got rate limited!
+> **IMPORTANT** <
+Rate limit!
     Timeout: $rateLimt[timeout]
     Limit: $rateLimit[limit]
     Method: $rateLimit[method]
@@ -159,6 +159,9 @@ bot.command({
 
     😂 **__Fun__**
     +snipe
+    +emoji
+    +howgay
+    +howsimp
     +editsnipe
     +quote <Message Link>
     +mchead <Minecraft Name>
@@ -324,10 +327,67 @@ bot.command({
 
 /* 
     😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂
+    😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂
+    😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂
+
                             Fun
                           Section
+    
+    😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂
+    😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂
     😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂
 */
+
+bot.command({
+    name: "howgay",
+    aliases: ["gay", "gae", "gayhow", "howgae"],
+    code: `
+    $title[How gay are you?]
+    $description[You are $random[0;101]%  🏳️‍🌈]
+    $footer[Imagine making jokes in 2021]
+    $color[RANDOM]
+    `
+})
+
+bot.command({
+    name: "howsimp",
+    aliases: ["simp"],
+    code: `
+    $title[How simp are you?]
+    $description[You are $random[0;101]% a simp~]
+    $footer[Silence wench]
+    $color[RANDOM]
+    `
+})
+
+bot.command({
+    name: "dice",
+    aliases: ["random", "roll", "cube", "rubik", "coob"],
+    code: `
+    $title[Roll The Dice 🎲]
+    $description[I've rolled the dice... I got: $random[1;6] 🎲]
+    $color[WHITE]
+    `
+})
+
+bot.command({
+    name: "roulette",
+    aliases: ["russian", "russian-roulette", "rou"],
+    code: `
+    $title[Russian Roulette? Ok.]
+    $description[You've hit the: $random[1;9] bullet. You $randomText[survived it :);survived it :);survived it :);survived it :);survived it :);survived it :);didn't survived it :(;didn't survived it :(;didn't survived it :(;didn't survived it :(;didn't survived it :(]]
+    $color[RED]
+    `
+})
+
+bot.command({
+    name: "emoji",
+    code: `
+    $randomText[😀;😃;😄;😁;😆;😅;🤣;😂;🙂;🙃;😉;😊;😇;🥰;😍;🤩;😘;😗;☺️;😚;😙;🥲;😋;😛;😜;🤪;😝;🤑;🤗;🤭;🤫;🤔;🤐;🤨;😐;😑;😶;😏;😒;🙄;😬;🤥;😌;😔;😪;🤤;😴;😷;🤒;🤕;🤢;🤮;🤧;🥶;🥴;😵;🤯;🤠;🥳;😎;🤓;🧐;😕;😟;🙁;☹️;😮;😯;😲;😳;🥺;😦;😧;😨;😰;😥;😭;😱;😖;😣;😞;😓;😩;😫;🥱;😤;😠;🤬;😈;💀;☠️;💩;🤡;👹;👺;👻;👽;👾;🤖;😺;😿;👋;🤚;🖐️;✋;🖖;👌;👍;👎;👊;🤛;🤜;👏;🙌;👐;🤲;🤝;🙏;✍️;💅;🤳;💪;🧠;🦷;🦴;👀;👁️;👶;🧒;👦;👧;🧑‍;🗣️;👤;👥;👣;🧳;🌂;☂️;🎃;🧵;🧶;🧥;🧦;👗;👘;🥻;🩱;🩲;🩳;👙;👚;👛;👜;👝;🎒;👒;🎩;🎓;💄;💍;💼;🩸]
+    `
+})
+
+//  https://cdn.discordapp.com/attachments/790891906569076736/833787326982651914/video0-204.mp4
 
 bot.command({
     name: "meme",
