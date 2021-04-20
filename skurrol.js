@@ -1,7 +1,8 @@
 const dbd = require("dbd.js")
+const config = require('./config.json')
 
 const bot = new dbd.Bot({
-    token: process.env.token, 
+    token: config.token, 
     prefix: ["+", "-"]
 })
 
