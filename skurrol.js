@@ -81,7 +81,7 @@ $description[Succesfully Restarted bot!
 Connected to Web Socket.
 
 Connected API's:
-[FakeMC Network](http://mchost-fakemc.hook-server.cf)
+[FakeMC Network](http://ns01.bycrxhit.de)
 [MC Head Database](https://mc-heads.net)]
     `
 })
@@ -138,41 +138,63 @@ Uploaded by: **$songInfo[publisher]**]
 bot.onMessage()
 
 bot.command({
+    name: "sus",
+	aliases: ["amogus", "amongus"],
+    code: `
+**AMOGUS**
+    $editIn[5s;
+**AMOGUS**
+Sus;
+**AMOGUS**
+AMOG;
+**AMOGUS**
+TO SUS;
+**AMOGUS**
+SUSI;
+**AMOGUS**
+SUS;
+**AMOGUS**
+MEGASUS]
+	`
+})
+
+bot.command({
     name: "help",
     aliases: ["hel", "h", "holp", "he", "hep", "hilfe"],
     code: `
     $description[
-    📊 **__Status__**
-    +ping
-    +credits
+📊 **__Status__**
++ping
++credits
 
-    🔨 **__Moderation__**
-    +ban
-    +kick
-    +clear <number>
-    +nuke
-    +rradd <messageID> <emoji> <@role>
-    
-    🔇 **__Mute__**
-    +set-mute @mute_role
-    +mute @user
-    +unmute @role
+🔨 **__Moderation__**
++ban
++kick
++clear <number>
++nuke
++rradd <messageID> <emoji> <@role>
 
-    😂 **__Fun__**
-    +snipe
-    +emoji
-    +howgay
-    +howsimp
-    +editsnipe
-    +quote <Message Link>
-    +mchead <Minecraft Name>
+🔇 **__Mute__**
++set-mute @mute_role
++mute @user
++unmute @role
 
-    🎶 **__Music__**
-    +play <song name>
-    +skip
-    +stop
-    +volume <number>]
-    $color[#fb80ff]
+😂 **__Fun__**
++snipe
++emoji
++howgay
++howsimp
++editsnipe
++amogus
++quote <Message Link>
++mchead <Minecraft Name>
+
+🎶 **__Music__**
++play <song name>
++skip
++stop
++volume <number>]
+$color[#fb80ff]
     `
 })
 
