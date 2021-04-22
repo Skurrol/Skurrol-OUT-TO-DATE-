@@ -691,15 +691,3 @@ bot.command({
     $onlyForIDs[$getVar[owner]]
     `
 })
-
-/*
-    Schnapp macht das krokodil, das krokodil macht schnapp
-    egal was du hast, gib ihm was ab
-    Schnapp macht das krokodil, das krokodil macht schnapp
-    alle wissen was er macht,
-    das kroko,
-    er dealt wieder in der Nachbarschaft
-
-    ______________________________
-    JESUS UND DIE 187 PRIESTERBANDE
-*/
