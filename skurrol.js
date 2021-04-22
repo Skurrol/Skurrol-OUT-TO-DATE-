@@ -701,5 +701,5 @@ bot.command({
     er dealt wieder in der Nachbarschaft
 
     ______________________________
-    JESUS UND DIE 187 PRIESERBANDE
+    JESUS UND DIE 187 PRIESTERBANDE
 */
