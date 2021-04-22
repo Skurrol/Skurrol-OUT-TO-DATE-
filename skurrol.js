@@ -3,7 +3,7 @@ const config = require('./config.json')
 
 const bot = new dbd.Bot({
     token: config.token, 
-    prefix: ["+", "-"]
+    prefix: ["?", "!"]
 })
 
 /*
