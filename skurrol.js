@@ -28,6 +28,7 @@ const bot = new dbd.Bot({
 
 bot.variables({
     playing: "0",
+    prefix: "+",
     queue: "0",
     owner: "758444849212555296;664919725301694494;668495490429747240",
     snipe_msg: "",
@@ -37,6 +38,7 @@ bot.variables({
     msgEditorID: "undefined",
     esnipeOldMsg: "undefined",
     rr1: "none",
+    modlogs: "0",
     mute: "1"
 })
 
@@ -60,11 +62,36 @@ bot.status({
     time: 10
 })
 
+bot.command({
+    name: "setup-modlogs",
+    aliases: ["s-modlogs"],
+    code: `
+    
+    $if[$message[1]==remove]
+    $setServerVar[modlogs;0]
+    $color[RANDOM]
+    $channelSendMessage[$getServerVar[modlogs];<@$authorID> - Mod Logs Channel was removed by $username #$discriminator[$authorID].]
+    $suppressErrors
+   
+    $else
+    $if[$channelExists[$findServerChannel[$message]]==true]
+    $setServerVar[modlogs;$findServerChannel[$message]]
+    $description[<#$findServerChannel[$message]> set as Mod Logs Chaanel from <#$channelCategoryID[$findServerChannel[$messag]]> Category.]
+    $color[RANDOM]
+    
+    $endif
+    $endif
+    
+    $argsCheck[>1;{title:Missing Arguments}{description:$getServerVar[prefix]s-modlogs <#channel/ID/remove>}{color:RED}]
+    $onlyPerms[manageserver;{title:Missing Permissions}{description:Missing Manage Server permission}{color:RED}]`
+    
+  })
+
 bot.rateLimitCommand({ 
     channel: "803546569197486086",
     code: `
-> **IMPORTANT** <
-Rate limit!
+> **IMPORTANT**
+Abuse Detected!
     Timeout: $rateLimt[timeout]
     Limit: $rateLimit[limit]
     Method: $rateLimit[method]
@@ -108,7 +135,7 @@ bot.deletedCommand({
     $setChannelVar[snipe_date;$day $month $year - $hour:$minute]
     `
 });
-bot.onMessageDelete();
+bot.onMessageDelete()
 
 /*
     Callback for music
@@ -141,7 +168,7 @@ bot.command({
     name: "sus",
 	aliases: ["amogus", "amongus"],
     code: `
-**AMOGUS**
+    **AMOGUS**
 	`
 })
 
@@ -155,6 +182,7 @@ bot.command({
 +credits
 
 🔨 **__Moderation__**
++setup-modlogs <#channel-name>
 +ban
 +kick
 +clear <number>
@@ -522,6 +550,9 @@ bot.command({
     name: "ban",
     aliases: ["bann"],
     code: `
+    $if[$serverChannelExists[$getServerVar[modlogs]]==true]
+    $channelSendMessage[$getServerVar[modlogs];<@$authorID>{title:Mod Logs}{field:Action:Ban}{field:Moderator:$username}{field:User:$username[$findUser[$message[1]]]#$discriminator[$findUser[$message[1]]]\n(\`$findUser[$message[1]]\`)}{thumbnail:$userAvatar[$findUser[$message[1]]]}{color:RANDOM}]
+    $endif
     $title[User Banned]
     $description[The User <@$mentioned[1]> got banned
 by: <@$authorID>]
@@ -533,6 +564,9 @@ by: <@$authorID>]
 bot.command({
     name: "kick",
     code: `
+    $if[$serverChannelExists[$getServerVar[modlogs]]==true]
+    $channelSendMessage[$getServerVar[modlogs];<@$authorID>{title:Mod Logs}{field:Action:Kick}{field:Moderator:$username}{field:User:$username[$findUser[$message[1]]]#$discriminator[$findUser[$message[1]]]\n(\`$findUser[$message[1]]\`)}{thumbnail:$userAvatar[$findUser[$message[1]]]}{color:RANDOM}]
+    $endif
     $kick[$mentioned[1]]
     $title[User Kicked]
     $color[YELLOW]
