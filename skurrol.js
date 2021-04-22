@@ -142,19 +142,6 @@ bot.command({
 	aliases: ["amogus", "amongus"],
     code: `
 **AMOGUS**
-    $editIn[5s;
-**AMOGUS**
-Sus;
-**AMOGUS**
-AMOG;
-**AMOGUS**
-TO SUS;
-**AMOGUS**
-SUSI;
-**AMOGUS**
-SUS;
-**AMOGUS**
-MEGASUS]
 	`
 })
 
