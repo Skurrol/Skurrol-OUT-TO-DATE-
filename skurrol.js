@@ -549,7 +549,7 @@ bot.command({
     Use: +set-mute <@role>
     $else
     $giveRole[$mentioned[1];$getServerVar[mute]]
-    Muted <@mentioned[1]>
+    Muted <@$mentioned[1]>
     $endIf
     `
 })
@@ -563,7 +563,7 @@ bot.command({
     Use: +set-mute <@roleID>
     $else
     $takeRole[$mentioned[1];$getServerVar[mute]]
-    Un-Muted <@mentioned[1]>
+    Un-Muted <@$mentioned[1]>
     $endIf
     `
 })
