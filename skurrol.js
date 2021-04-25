@@ -549,7 +549,9 @@ bot.command({
     Use: +set-mute <@role>
     $else
     $giveRole[$mentioned[1];$getServerVar[mute]]
-    Muted <@$mentioned[1]>
+    $title[Successfully Muted]
+    $description[Muted <@$mentioned[1]>]
+    $color[RED]
     $endIf
     `
 })
@@ -563,7 +565,9 @@ bot.command({
     Use: +set-mute <@roleID>
     $else
     $takeRole[$mentioned[1];$getServerVar[mute]]
-    Un-Muted <@$mentioned[1]>
+    $title[Successfully unmuted]
+    $description[Un-Muted <@$mentioned[1]>]
+    $color[GREEN]
     $endIf
     `
 })
@@ -572,8 +576,10 @@ bot.command({
     name: "set-mute",
     code: `
     $setServerVar[mute;$mentionedRoles[1]]
-    Succesfully set the Mute Role!
-    Mute Role ID: <&$mentionedRoles[1]>
+    $title[Mute-role set!]
+    $description[Succesfully set the Mute Role!
+    Mute Role: <@&$mentionedRoles[1]>]
+    $color[GREEN]
     `
 })
 
