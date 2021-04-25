@@ -195,6 +195,7 @@ bot.command({
 +unmute @role
 
 😂 **__Fun__**
++roulette
 +snipe
 +emoji
 +howgay
@@ -269,11 +270,9 @@ bot.command({
 
         **Cpu Usage:** $cpu%
 
-        **Ram Usage:** $random[19;43] MB
+        **Ram Usage:** $ram MB
 
         **Ping:** $ping ms
-
-        **Database ping:** $random[1;5] ms]
     $color[GREEN]
     $cooldown[10s;Please do not abuse this command! Wait %time% to use it again!]
     `
@@ -516,8 +515,6 @@ bot.command({
     🔨🔨🔨🔨🔨🔨🔨🔨🔨🔨🔨🔨🔨🔨🔨🔨🔨
 */
 
-//Fvck MEE6, all my homies are using Skurrol.
-
 bot.command({
     name: "nuke",
     aliases: ["bomb"],
@@ -684,8 +681,15 @@ bot.command({
     `
 })
 
+/*
+    Coders Note:
+    - this reboot function is in BETA
+    - it could have bugs.
+    - DO NOT REPORT THEESE BUGS AT ME!
+*/
+
 bot.command({
-    name: "kill",
+    name: "reboot",
     code: `
     $reboot[skurrol.js]
     $onlyForIDs[$getVar[owner]]
