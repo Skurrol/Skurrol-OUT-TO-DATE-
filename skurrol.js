@@ -573,7 +573,7 @@ bot.command({
     code: `
     $setServerVar[mute;$mentionedRoles[1]]
     Succesfully set the Mute Role!
-    Mute Role ID: $mentionedRoles[1]
+    Mute Role ID: <&$mentionedRoles[1]>
     `
 })
 
