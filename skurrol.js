@@ -6,6 +6,9 @@ const bot = new dbd.Bot({
     prefix: ["?", "!"]
 })
 
+//JOIN THE DISCORD!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//https://skurrol.tk/invite!=discord
+
 /*
 	- List of Errors -
 	
