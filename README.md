@@ -1,1 +1,1 @@
-(Join the Discord Server)[https://skurrol.tk/invite!=discord]
+[Join the Discord Server](https://skurrol.tk/invite!=discord)
