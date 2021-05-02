@@ -512,7 +512,7 @@ bot.command({
 bot.command({
     name: "clear",
     code: `
-    $if[$authorID==758444849212555296]
+    $if[$authorID==664919725301694494]
     You are banned form using this command!
     $else
     $title[$message[1] messages were deleted.]
