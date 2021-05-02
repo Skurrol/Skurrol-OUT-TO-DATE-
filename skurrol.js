@@ -507,6 +507,8 @@ bot.command({
     `
 })
 
+
+//Banned AndreasKiller253 cause abusing it.
 bot.command({
     name: "clear",
     code: `
