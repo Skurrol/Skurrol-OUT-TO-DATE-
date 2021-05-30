@@ -86,7 +86,7 @@ $description[Succesfully Restarted bot!
 Connected to Web Socket.
 
 Connected API's:
-[FakeMC Network](http://ns01.bycrxhit.de)
+[FakeMC Network](http://fakemc.ml)
 [MC Head Database](https://mc-heads.net)]
     `
 })
@@ -402,7 +402,7 @@ bot.command({
 bot.command({
     name: "meme",
     code: `
-    $image[http://ns01.bycrxhit.de/api=/meme=/$random[1;92].png]
+    $image[https://cloud.bycrxhit.de/api=/meme=/$random[1;100].png]
     $footer[Debug: $random[1;95].png]
     $cooldown[4s;Please do not abuse that command!]
     `
