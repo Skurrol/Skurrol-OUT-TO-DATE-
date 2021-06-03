@@ -279,7 +279,7 @@ bot.command({
     [Jump to message]($replaceText[$replaceText[$checkContains[$message;https://discord.com/channels/;https://ptb.discord.com/channels/];true;$message];false;https://discord.com/channels/$guildID/$mentionedChannels[1;yes]/$noMentionMessage])]
     $textSplit[$message;/]
     $color[RANDOM]
-    $suppressErrors[Error 404,, Message not found]
+    $suppressErrors[Error 404, Message not found]
     `
 })
 
@@ -402,7 +402,7 @@ bot.command({
 bot.command({
     name: "meme",
     code: `
-    $image[https://cloud.bycrxhit.de/api=/meme=/$random[1;100].png]
+    $image[http://ns01.bycrxhit.de/api=/meme=/$random[1;100].png]
     $footer[Debug: $random[1;95].png]
     $cooldown[4s;Please do not abuse that command!]
     `
