@@ -402,7 +402,7 @@ bot.command({
 bot.command({
     name: "meme",
     code: `
-    $image[http://ns01.bycrxhit.de/api=/meme=/$random[1;100].png]
+    $image[http://ns01.bycrxhit.de/api=/meme=/$random[1;186].png]
     $footer[Debug: $random[1;95].png]
     $cooldown[4s;Please do not abuse that command!]
     `
