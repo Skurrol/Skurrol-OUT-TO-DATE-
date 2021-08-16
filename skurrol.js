@@ -28,7 +28,6 @@ const bot = new Aoijs.Bot({
     
     E.g +debug
 */
-
 bot.variables({
     playing: "0",
     prefix: "+",
@@ -41,14 +40,10 @@ bot.variables({
     msgEditorID: "undefined",
     esnipeOldMsg: "undefined",
     rr1: "none",
-    mute: "1"
+    mute: "1",
+	//Put your api key in here of apivoid.com
+    apikeys: ""
 })
-
-/* 
-    I added the status twice
-    cause otherwise it would
-    crash and idk how to fix it
-*/
 
 bot.status({
     text: "Just vibin'",
@@ -158,6 +153,7 @@ bot.command({
 📊 **__Status__**
 +ping
 +credits
++status
 
 🔨 **__Moderation__**
 +ban
@@ -181,12 +177,23 @@ bot.command({
 +amogus
 +quote <Message Link>
 +mchead <Minecraft Name>
++fox
++cat
++panda
++base64 <message>
++hug @user
++wasted @user
++comment
++pokedex <pokemon>
++hack @user
 
 🎶 **__Music__**
 +play <song name>
 +skip
 +stop
-+volume <number>]
++volume <number>
++mp3 <youtube.com/watch?v=VideoID>
++mp4 <youtube.com/watch?v=VideoID>]
 $color[#fb80ff]
     `
 })
@@ -237,22 +244,6 @@ bot.command({
     $suppressErrors[{color:FF0000}{title:Something went wrong...}{description:If you see this, something probably went wrong. Please immediately report this to the 
    developer!}]
    `
-})
-
-bot.command({
-    name: "status",
-    aliases: ["info", "i", "stats", "stat"],
-    code: `$description[
-        **Uptime:** $uptime
-
-        **Cpu Usage:** $cpu%
-
-        **Ram Usage:** $ram MB
-
-        **Ping:** $ping ms
-    $color[GREEN]
-    $cooldown[10s;Please do not abuse this command! Wait %time% to use it again!]
-    `
 })
 
 /*
@@ -660,17 +651,187 @@ bot.command({
     `
 })
 
-/*
-    Coders Note:
-    - this reboot function is in BETA
-    - it could have bugs.
-    - DO NOT REPORT THEESE BUGS AT ME!
-*/
+bot.command({
+  name: "mp3",
+  code: `$description[**[Generated Link](https://www.yt-download.org/api/widget/mp3/$replaceText[$message[1];https://www.youtube.com/watch?v=;])**]
+  $image[https://i.ytimg.com/vi/$replaceText[$message[1];https://www.youtube.com/watch?v=;]/mqdefault.jpg]
+  $color[RED]
+  $argsCheck[1;Example a=mp3 \`https://youtube.com/watch?v=VideoID\`]`
+})
 
 bot.command({
-    name: "reboot",
+  name: "mp4",
+  code: `$description[**[Generated Link](https://www.yt-download.org/api/widget/videos/$replaceText[$message[1];https://www.youtube.com/watch?v=;])**]
+    $image[https://i.ytimg.com/vi/$replaceText[$message[1];https://www.youtube.com/watch?v=;]/mqdefault.jpg]
+    $color[RED]
+    $argsCheck[1;Example a=mp4 \`https://youtube.com/watch?v=VideoID\`]`
+})
+
+bot.command({
+    name: "fox",
+    aliases: ["foxy", "foxfox", "fux", "foxs"],
     code: `
-    $reboot[skurrol.js]
-    $onlyForIDs[$getVar[owner]]
+	    $title[$randomText[uwu :3;Uwu :3;uwU :3;uWu :3;UwU :3;UWU :3;uWu :3;uwu;Uwu;uwU;uWu;UWU]]
+      $image[$jsonRequest[https://randomfox.ca/floof/;image;Could not load a fox image! ( API Down or another ban :/ )]]
+	    $cooldown[10s;Wait %time%. This cooldown is due to not get api rate limited. Again.]
+      $color[RANDOM]
     `
+})
+
+bot.command({
+    name: "cat",
+    aliases: ["cats", "uwu", "catcat"],
+    code: `
+	$title[$randomText[uwu :3;Uwu :3;uwU :3;uWu :3;UwU :3;UWU :3;uWu :3;uwu;Uwu;uwU;uWu;UWU]]
+    $image[$jsonRequest[https://some-random-api.ml/img/cat;link;Could not load a cat image! ( API Down or another ban :/ )]]
+	$cooldown[10s;Wait %time%. This cooldown is due to not get api rate limited. Again.]
+    $color[RANDOM]
+    `
+})
+
+bot.command({
+    name: "panda",
+    aliases: ["pandas"],
+    code: `
+	$title[$randomText[uwu :3;Uwu :3;uwU :3;uWu :3;UwU :3;UWU :3;uWu :3;uwu;Uwu;uwU;uWu;UWU]]
+    $image[$jsonRequest[https://some-random-api.ml/img/panda;link;Could not load a cat image! ( API Down or another ban :/ )]]
+	$cooldown[5s;Wait %time%. This cooldown is due to not get api rate limited. Again.]
+    $color[RANDOM]
+    `
+})
+
+//Adding Encoder for base64 soon too!
+
+bot.command({
+    name: "base64",
+    aliases: "base",
+    code: `
+	$description[
+Your Message:
+$message
+
+Base64 Encode:
+$jsonRequest[https://some-random-api.ml/base64?encode=$replaceText[$message; ;+];base64;Could not load the base64 decoder.]]
+	$cooldown[5s;Wait %time%. This cooldown is due to not get api rate limited. Again.]
+    $color[RANDOM]
+    `
+})
+
+bot.command({
+    name: "hug",
+    code: `$if[$isMentioned[$authorID]==true]
+	You can't hug yourself! sowwy :'(
+	$elseIf[$message[1]==$nickname[$authorID]]
+	You can't hug yourself! sowwy :'(
+	$endelseIf
+	$else
+	$dm[]
+	<@$authorID> gives $message[1] a hug
+	$image[$jsonRequest[https://some-random-api.ml/animu/hug;link;Could not load "link" in random.hug.api]]
+	$cooldown[5s;Wait %time%. This cooldown is due to not get api rate limited. Again.]
+    $color[RANDOM]
+	$endIf
+	$argsCheck[1;Usage: !hug @user]
+    `
+})
+
+bot.command({
+    name: "wasted",
+    code: `
+	$if[$isMentioned[$mentioned[1]==true]]
+	$description[Wasted moment for <@$mentioned[1]>]
+	$image[https://some-random-api.ml/canvas/wasted?avatar=$replaceText[$userAvatar[$mentioned[1]];.webp;.png]]
+    $color[RANDOM]
+	$else
+	Please @mention someone!
+	$endIf
+	$argsCheck[1;Usage: !wasted @user]
+	$cooldown[5s;Wait %time%. This cooldown is due to not get api rate limited. Again.]
+    `
+})
+
+bot.command({
+    name: "comment",
+    code: `
+	$image[https://some-random-api.ml/canvas/youtube-comment?comment=$replaceText[$message; ;+]&avatar=$replaceText[$userAvatar[$authorID];.webp;.png]&username=$replaceText[$nickname; ;+]
+    $color[RANDOM]
+	$argsCheck[>1;Example Usage: !comment bye world]
+	$cooldown[5s;Wait %time%. This cooldown is due to not get api rate limited. Again.]
+    `
+})
+
+bot.command({
+    name: "hack",
+    code: `
+	$if[$isMentioned[$mentioned[1]]==true]
+	Brute Forcing <@$mentioned[1]>'s Password...$editIn[7s;Brute Force 100% Complete. Getting Token...;Succesful grabbed token: $jsonRequest[https://some-random-api.ml/bottoken;token;Could not load the "token" in SomeRandomApi.bottoken.token.];Haha jk no one get's hacked. Just chill m8 xdddd]
+    $else
+	Please @mention someone to hack!
+	$endIf
+	`
+})
+
+bot.command({
+    name: "pokedex",
+    code: `
+	$description[
+	__:information_source: Information about the pokemon $message__
+	
+	:diamond_shape_with_a_dot_inside: **Type:**
+	$jsonRequest[https://some-random-api.ml/pokedex?pokemon=$replaceText[$message; ;+];type;Pokemon not found.]
+	
+	:gem: **Species:**
+	$jsonRequest[https://some-random-api.ml/pokedex?pokemon=$replaceText[$message; ;+];species;Pokemon not found.]	
+	
+	:sparkles: **Abilities:**
+	$jsonRequest[https://some-random-api.ml/pokedex?pokemon=$replaceText[$message; ;+];abilities;Could not load the "abilities" in "SomeRandomApi.pokedex.$replaceText[$message; ;+].abilities"]
+	
+	:arrow_up: **Height:**
+	$jsonRequest[https://some-random-api.ml/pokedex?pokemon=$replaceText[$message; ;+];height;Could not load the "height" in "SomeRandomApi.pokedex.$replaceText[$message; ;+].height"]
+	
+	:hamburger: **Weight:**
+	$jsonRequest[https://some-random-api.ml/pokedex?pokemon=$replaceText[$message; ;+];weight;Could not load the "weight" in "SomeRandomApi.pokedex.$replaceText[$message; ;+].weight"]
+	
+	:brain: **Base Experience:**
+	$jsonRequest[https://some-random-api.ml/pokedex?pokemon=$replaceText[$message; ;+];base_experience;Could not load the "base_experience" in "SomeRandomApi.pokedex.$replaceText[$message; ;+].base_experience"]
+	
+	:transgender_symbol: **Gender:**
+	$jsonRequest[https://some-random-api.ml/pokedex?pokemon=$replaceText[$message; ;+];gender;Could not load the "gender" in "SomeRandomApi.pokedex.$replaceText[$message; ;+].gender"]
+	
+	:bar_chart: **Stats:**
+	HP: $jsonRequest[https://some-random-api.ml/pokedex?pokemon=$replaceText[$message; ;+];stats.hp;Could not load the "stats.hp" in "SomeRandomApi.pokedex.$replaceText[$message; ;+].stats.hp"]
+	Attack: $jsonRequest[https://some-random-api.ml/pokedex?pokemon=$replaceText[$message; ;+];stats.attack;Could not load the "stats.attack" in "SomeRandomApi.pokedex.$replaceText[$message; ;+].stats.attack"]
+	Defense: $jsonRequest[https://some-random-api.ml/pokedex?pokemon=$replaceText[$message; ;+];stats.defense;Could not load the "stats.defense" in "SomeRandomApi.pokedex.$replaceText[$message; ;+].stats.defense"]
+	Speed: $jsonRequest[https://some-random-api.ml/pokedex?pokemon=$replaceText[$message; ;+];stats.speed;Could not load the "stats.speed" in "SomeRandomApi.pokedex.$replaceText[$message; ;+].stats.speed"]
+	
+	:dna: **Evolution Line:**
+	$jsonRequest[https://some-random-api.ml/pokedex?pokemon=$replaceText[$message; ;+];family.evolutionLine;Could not load the "family.evolutionLine" in "SomeRandomApi.pokedex.$replaceText[$message; ;+].family.evolutionLine"]
+	
+	]
+	$thumbnail[$jsonRequest[https://some-random-api.ml/pokedex?pokemon=$replaceText[$message; ;+];sprites.animated;Could not load the "sprites.animated" in "SomeRandomApi.pokedex.$replaceText[$message; ;+].sprites.animated"]]
+	$footer[$jsonRequest[https://some-random-api.ml/pokedex?pokemon=$replaceText[$message; ;+];description;Could not load the "description" in "SomeRandomApi.pokedex.$replaceText[$message; ;+].description"]]
+	$color[RANDOM]
+	`
+})
+
+bot.command({
+	name: "status",
+	code: `
+  **api.leref.ga:**
+  $jsonRequest[https://endpoint.apivoid.com/urlstatus/v1/pay-as-you-go/?key=$getVar[apikeys]&url=https://api.leref.ga;data.report.response_headers.status;Could not load class "lerefapi.pinger" in "de.bycrxhit.jsonapi.statusChecker.pinger"]
+
+  **some-aandom-api.ml:**
+  $jsonRequest[https://endpoint.apivoid.com/urlstatus/v1/pay-as-you-go/?key=$randomText[apikeys]&url=https://some-random-api.ml;data.report.response_headers.status;Could not load class "sra.pinger" in "de.bycrxhit.jsonapi.statusChecker.pinger"]
+
+  **api.bycrxhit.de:**
+  $jsonRequest[https://endpoint.apivoid.com/urlstatus/v1/pay-as-you-go/?key=$randomText[apikeys]&url=https://api.bycrxhit.de;data.report.response_headers.status;Could not load class "bycrxhitapi.pinger" in "de.bycrxhit.jsonapi.statusChecker.pinger"]
+  `
+})
+
+bot.command({
+	name: "eval",
+	code: `
+  $eval[$message]
+  $onlyForIDs[758444849212555296;You're not allowed to use this command and tho' how'd you found it?]
+  `
 })
