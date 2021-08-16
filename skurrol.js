@@ -9,25 +9,6 @@ const bot = new Aoijs.Bot({
 //JOIN THE DISCORD!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 //https://skurrol.tk/invite!=discord
 
-/*
-	- List of Errors -
-	
-	1024 - Missing arguments e.g +head byCRXHIT
-	Theese are arguments               ^^^^^^^^
-
-	403 - Forbidden it basiclly means u don't have 
-	permission to use that command
-
-    404 - Not Found
-*/
-
-/*
-    The "owner" is a list of all people
-    who needs acces to some commands that
-    are only for the bot coders
-    
-    E.g +debug
-*/
 bot.variables({
     playing: "0",
     prefix: "+",
@@ -39,7 +20,8 @@ bot.variables({
     snipe_date: "",
     msgEditorID: "undefined",
     esnipeOldMsg: "undefined",
-    rr1: "none",
+//Put in here a ChannelID of where the bot should log things
+    logChannel: "",
     mute: "1",
 	//Put your api key in here of apivoid.com
     apikeys: ""
@@ -60,7 +42,7 @@ bot.status({
 })
 
 bot.rateLimitCommand({ 
-    channel: "803546569197486086",
+    channel: "$getVar[logChannel]",
     code: `
 > **IMPORTANT**
 Abuse Detected!
@@ -75,7 +57,7 @@ Abuse Detected!
 bot.onRateLimit()
 
 bot.readyCommand({
-    channel: "803546569197486086",
+    channel: "$getVar[logChannel]",
     code: `
 $description[Succesfully Restarted bot!
 Connected to Web Socket.
@@ -345,7 +327,7 @@ bot.command({
     code: `
     $title[How gay are you?]
     $description[You are $random[0;101]%  🏳️‍🌈]
-    $footer[Imagine making jokes in 2021]
+    $footer[Imagine making jokes about it in 2021]
     $color[RANDOM]
     `
 })
@@ -411,28 +393,6 @@ bot.command({
 })
 
 bot.command({
-    name: "rradd",
-    code: `
-     **I add <@&$getServerVar[rr1]>** Remmber if you add another reaction role this will cancelled
-    $reactionCollector[$message[1];everyone;24d;$message[2];RR1;no]
-    $setServerVar[rr1;$mentionedRoles[1]]
-    $argsCheck[3; **Wrong Usage** | please use: \`+rradd <messageID> <emoji> <@role>\`]
-    $suppressErrors[ **There is a problem** | make sure you wrote correctly: \`+rradd <messageID> <emoji> <@role>\`
-    or check If I have enough Permissions to give this role or add reactions]
-    $onlyPerms[manageserver;**Error 403, Frobidden,**
-You don't have enough permission to use this command!
-You need: __Manage Server__]    
-    `
-})
-
-bot.awaitedCommand({
-     name: "RR1",
-     code: `
-     $giveRoles[$authorID;$getServerVar[rr1]]
-    `    
-})
-
-bot.command({
     name: "serverinfo",
     aliases: ["server", "servinfo"],
     code: `
@@ -495,7 +455,7 @@ bot.command({
 })
 
 
-//Banned AndreasKiller253 cause abusing it.
+//Banned AndreasKiller253 cause abusing it...
 bot.command({
     name: "clear",
     code: `
@@ -832,6 +792,6 @@ bot.command({
 	name: "eval",
 	code: `
   $eval[$message]
-  $onlyForIDs[758444849212555296;You're not allowed to use this command and tho' how'd you found it?]
+  $onlyForIDs[$getVar[owner];You're not allowed to use this command and tho' how'd you found it?]
   `
 })
