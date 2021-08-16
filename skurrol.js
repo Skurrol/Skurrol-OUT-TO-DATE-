@@ -13,7 +13,8 @@ bot.variables({
     playing: "0",
     prefix: "+",
     queue: "0",
-    owner: "758444849212555296;664919725301694494;668495490429747240",
+	//Put here a list of UserIDs, between every userid put a ;
+    owner: "",
     snipe_msg: "",
     snipe_author: "",
     snipe_channel: "",
