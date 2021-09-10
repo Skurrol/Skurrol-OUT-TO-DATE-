@@ -1,4 +1,4 @@
-//Idk why but you can't add alises to commands so i just did this, sorry.
+//Idk why but you can't add alises to command handlers so i just did this, sorry.
 module.exports = [{
   name: 'credits',
   code: `$description[
