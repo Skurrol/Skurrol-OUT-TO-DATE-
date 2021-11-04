@@ -59,11 +59,11 @@ bot.onRateLimit()
 bot.readyCommand({
     channel: "$getVar[logChannel]",
     code: `
-$description[Succesfully Restarted bot!
-Connected to Web Socket.
-Connected API's:
-[FakeMC Network](http://fakemc.ml)
-[MC Head Database](https://mc-heads.net)]
+    $description[Succesfully Restarted bot!
+    Connected to Web Socket.
+    Connected to API's:
+    [byCRXHIT Network](http://bycrxhit.de)
+    [MC Head Database](https://mc-heads.net)]
     `
 })
 
