@@ -24,7 +24,7 @@ bot.variables({
 	//Put in here the channel id where the bot should log things
     logChannel: "",
     mute: "1",
-	//Put here your api key from apivoid.com 
+	//Put here your api key from apivoid.com but you could also use our ones :)
     apikeys: "179bdf909f9fa1e347e169af3e070d08564f02de;7d2b2fc35a883ec31d137bd56c7c33c699ebb11b;cfcf6a5fc8273a4985c000f080d86a77962d96eb"
 })
 
