@@ -13,7 +13,7 @@ bot.variables({
     playing: "0",
     prefix: "+",
     queue: "0",
-	//Put here your UserID
+    //Put here your UserID
     owner: "",
     snipe_msg: "",
     snipe_author: "",
@@ -109,8 +109,8 @@ bot.musicStartCommand({
     code: `
     $title[Playing Song]
     $description[Playing: **$songInfo[title]**
-Lenght: **$songInfo[duration] Minutes**
-Uploaded by: **$songInfo[publisher]**]
+    Lenght: **$songInfo[duration] Minutes**
+    Uploaded by: **$songInfo[publisher]**]
     $color[GREEN]
     $thumbnail[$songInfo[thumbnail]]
     `
